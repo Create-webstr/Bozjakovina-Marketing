@@ -978,3 +978,27 @@ body {
         padding: 10px;
     }
 }
+
+/* ========================================
+   SMANJIVANJE HEADERA ZA MOBITELE
+======================================== */
+
+@media (max-width: 768px) {
+    /* Smanjujemo visinu cijelog headera sa 170px na 80px */
+    .header-container {
+        height: 80px !important; 
+        padding: 0 20px;
+    }
+
+    /* Smanjujemo logo sa 150px na 50px da stane u manji header */
+    .logo {
+        height: 50px !important;
+        width: auto;
+    }
+
+    /* Pomakni hero sekciju prema gore jer je header sada manji */
+    .hero {
+        padding-top: 100px !important;
+        min-height: auto;
+    }
+}
