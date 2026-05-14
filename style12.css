@@ -1002,3 +1002,21 @@ body {
         min-height: auto;
     }
 }
+
+/* Smanjivanje headera SAMO na početnoj stranici za mobitele */
+@media (max-width: 768px) {
+    .pocetna-stranica .header-container {
+        height: 85px !important;
+        padding: 0 15px;
+    }
+
+    .pocetna-stranica .logo {
+        height: 55px !important;
+        width: auto;
+    }
+
+    /* Smanjujemo i razmak hero sekcije da tekst dođe više gore */
+    .pocetna-stranica .hero {
+        padding-top: 110px !important;
+    }
+}
