@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nama | Božjakovina Marketing</title>
+    <link rel="stylesheet" href="style12.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="C:\Users\david\OneDrive\Radna površina\LogoVectorCrno.svg" alt="Božjakovina Marketing Logo" class="logo">
+                <div class="logo-text">Božjakovina <span>Marketing</span></div>
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="Untitled-1.html" class="nav-link">Početna</a></li>
+                    <li><a href="Onama.html" class="nav-link active">O nama</a></li>
+                    <li><a href="projekti.html" class="nav-link">Projekti</a></li>
+                    <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Otvori izbornik">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+    </button>
+        </div>
+    </header>
+
+    <section class="hero" style="min-height: 40vh; padding-top: 180px;">
+        <div class="hero-content">
+            <span class="hero-subtitle">Upoznajte naš tim</span>
+            <h1 class="hero-title">O <span class="highlight">Nama</span></h1>
+        </div>
+        <div class="hero-decoration">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-3"></div>
+        </div>
+    </section>
+
+    <section id="o-nama-detalji" class="o-nama section-container">
+        <div class="o-nama-content">
+            
+            <div class="o-nama-text">
+                <h2 class="section-title" style="text-align: left;">Naša <span class="highlight">Priča</span></h2>
+                
+                <p>
+                    Naša priča u <strong>Božjakovina marketingu</strong> krenula je vrlo jednostavno – s jasnom vizijom da poduzetnicima iz našeg kraja, ali i šire, pokažemo kako digitalni marketing može biti konkretan alat za rast, a ne samo trošak.
+                </p>
+                
+                <p>
+                    Marketing vidimo kao investiciju, a ne kao puko ispunjavanje forme. Zato ne vjerujemo u objave bez plana, već u strategije koje vaš brend stavljaju ispred konkurencije. Za nas je to strateški alat koji vam pomaže da ostvarite svoje poslovne ciljeve.
+                </p>
+                
+                <p>
+                    U radu spajamo ono najbolje od oba svijeta: duboko poznajemo naše domaće tržište i ljude, ali primjenjujemo svjetske standarde i napredne metode kako bismo izvukli maksimum iz svake kampanje.
+                </p>
+
+                <div class="statistike">
+                    <div class="stat">
+                        <span class="stat-broj">100%</span>
+                        <span class="stat-tekst">Posvećenost</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-broj">24/7</span>
+                        <span class="stat-tekst">Podrška</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-broj">ROI</span>
+                        <span class="stat-tekst">Fokus na rezultate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-box">
+                <img src="C:\Users\david\OneDrive\Radna površina\LogoVectorCrno.svg" alt="Božjakovina Marketing" class="visual-logo">
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="C:\Users\david\OneDrive\Radna površina\LogoVectorCrno.svg" alt="Božjakovina Logo" class="footer-logo">
+                    <p class="footer-opis">
+                        Vaš partner u digitalnom svijetu. Stvaramo strategije koje vaš brend stavljaju ispred konkurencije.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-naslov">Brzi Linkovi</h4>
+                    <ul>
+                        <li><a href="Untitled-1.html">Početna</a></li>
+                        <li><a href="Onama.html">O nama</a></li>
+                        <li><a href="projekti.html">Projekti</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h4 class="footer-naslov">Društvene Mreže</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-card instagram">
+                            <div class="social-info">
+                                <span class="social-name">Instagram</span>
+                                <span class="social-handle">@bozjakovina_marketing</span>
+                            </div>
+                        </a>
+                        <a href="#" class="social-card tiktok">
+                            <div class="social-info">
+                                <span class="social-name">TikTok</span>
+                                <span class="social-handle">@bozjakovina_marketing</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">© 2024 <span class="highlight">Božjakovina Marketing</span>. Sva prava pridržana.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navList = document.querySelector('.nav-list');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navList.classList.toggle('active');
+    });
+
+    // Zatvori izbornik kad se klikne na link (važno za One-page navigaciju)
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navList.classList.remove('active');
+        });
+    });
+</script>
+</body>
+</html>

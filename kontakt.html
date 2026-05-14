@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Božjakovina Marketing</title>
+    <link rel="stylesheet" href="style12.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="C:\Users\david\OneDrive\Radna površina\LogoVectorCrno.svg" alt="Božjakovina Marketing Logo" class="logo">
+                <div class="logo-text">Božjakovina <span>Marketing</span></div>
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="Untitled-1.html" class="nav-link">Početna</a></li>
+                    <li><a href="Onama.html" class="nav-link">O nama</a></li>
+                    <li><a href="projekti.html" class="nav-link">Projekti</a></li>
+                    <li><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger gumb za mobitel -->
+            <button class="mobile-menu-toggle" aria-label="Otvori izbornik">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SEKCIJA -->
+    <section class="hero" style="min-height: 35vh; padding-top: 180px;">
+        <div class="hero-content">
+            <span class="hero-subtitle">Pošaljite nam upit</span>
+            <h1 class="hero-title">Stupimo u <span class="highlight">Kontakt</span></h1>
+        </div>
+    </section>
+
+    <!-- KONTAKT SEKCIJA -->
+    <section class="kontakt section-container">
+        <div class="kontakt-wrapper">
+            
+            <!-- Informacije s lijeve strane -->
+            <div class="kontakt-info">
+                <h2 class="section-title" style="text-align: left;">Imaš <span class="highlight">Pitanje?</span></h2>
+                <p style="margin-bottom: 30px; color: var(--siva-4);">Slobodno nas kontaktirajte putem obrasca ili direktno. Odgovaramo u najkraćem mogućem roku.</p>
+                
+                <div class="kontakt-item">
+                    <span class="kontakt-icon">📧</span>
+                    <div>
+                        <strong>Email adresa</strong>
+                        <p>info@bozjakovina-marketing.hr</p>
+                    </div>
+                </div>
+
+                <div class="kontakt-item">
+                    <span class="kontakt-icon">📱</span>
+                    <div>
+                        <strong>Telefon</strong>
+                        <p>+385 91 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="kontakt-item">
+                    <span class="kontakt-icon">📍</span>
+                    <div>
+                        <strong>Lokacija</strong>
+                        <p>Božjakovina, Hrvatska</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Obrazac s desne strane -->
+            <div class="kontakt-forma-container" style="background: var(--svijetlo-siva); padding: 40px; border-radius: var(--border-radius-lg); border: 1px solid var(--siva-1);">
+                <form action="#" class="kontakt-forma">
+                    <div class="forma-group">
+                        <input type="text" class="forma-input" placeholder="Vaše Ime i Prezime" required>
+                    </div>
+                    <div class="forma-group">
+                        <input type="email" class="forma-input" placeholder="Vaša Email Adresa" required>
+                    </div>
+                    <div class="forma-group">
+                        <input type="text" class="forma-input" placeholder="Predmet upita">
+                    </div>
+                    <div class="forma-group">
+                        <textarea class="forma-textarea" placeholder="Vaša poruka..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Pošalji Poruku</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="C:\Users\david\OneDrive\Radna površina\LogoVectorCrno.svg" alt="Božjakovina Logo" class="footer-logo">
+                    <p class="footer-opis">Vaš partner u digitalnom svijetu. Stvaramo strategije koje donose rezultate.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-naslov">Navigacija</h4>
+                    <ul>
+                        <li><a href="Untitled-1.html">Početna</a></li>
+                        <li><a href="Onama.html">O nama</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4 class="footer-naslov">Pratite nas</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-card instagram">
+                            <span class="social-name">Instagram</span>
+                        </a>
+                        <a href="#" class="social-card tiktok">
+                            <span class="social-name">TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 <span class="highlight">Božjakovina Marketing</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS ZA MOBILNI IZBORNIK -->
+    <script>
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

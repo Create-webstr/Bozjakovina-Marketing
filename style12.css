@@ -1,0 +1,980 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Crno-bijela paleta s nijansama sive */
+    --bijela:        #FFFFFF;
+    --svijetlo-siva: #F5F5F5;
+    --siva-1:        #E8E8E8;
+    --siva-2:        #CCCCCC;
+    --siva-3:        #999999;
+    --siva-4:        #666666;
+    --tamno-siva:    #333333;
+    --gotovo-crna:   #1A1A1A;
+    --crna:          #0D0D0D;
+
+    /* Plava paleta */
+    --plava-svijetla: #93C5FD;
+    --plava:          #3B82F6;
+    --plava-tamna:    #1D4ED8;
+    --plava-extra:    #1E3A8A;
+
+    /* Ostalo */
+    --border-radius:  8px;
+    --border-radius-lg: 16px;
+    --transition:     all 0.3s ease;
+    --shadow:         0 4px 20px rgba(0, 0, 0, 0.15);
+    --shadow-hover:   0 8px 30px rgba(59, 130, 246, 0.25);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bijela);
+    color: var(--tamno-siva);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   POMOĆNE KLASE
+======================================== */
+.highlight {
+    color: var(--plava);
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--gotovo-crna);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--siva-4);
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+/* ========================================
+   GUMBI
+======================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: var(--border-radius);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--plava);
+    color: var(--bijela);
+    border-color: var(--plava);
+}
+
+.btn-primary:hover {
+    background-color: var(--plava-tamna);
+    border-color: var(--plava-tamna);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--tamno-siva);
+    border-color: var(--siva-2);
+}
+
+.btn-secondary:hover {
+    background-color: var(--tamno-siva);
+    color: var(--bijela);
+    border-color: var(--tamno-siva);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--siva-1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo-wrapper {
+    display: flex;
+    align-items: left;
+    gap: 12px; /* Razmak između slike i teksta ako ga dodaš */
+    text-decoration: none;
+}
+
+.logo {
+    /* Povećano sa 44px na 54px za bolju vidljivost */
+    height: 150px; 
+    width: auto;
+    transition: var(--transition);
+    /* Uklonjen filter brightness(0) kako bi se vidjele originalne boje */
+    /* Ako želiš da bude crn, ostavi filter, ali preporučujem original */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.logo:hover {
+    transform: scale(1.05); /* Lagano povećanje na hover umjesto samo promjene boje */
+}
+
+/* Dodatak: Tekstualni logo ako je slika presitna */
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--gotovo-crna);
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.logo-text span {
+    color: var(--plava);
+}
+
+/* Navigacija */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--siva-4);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--plava);
+    background-color: rgba(59, 130, 246, 0.08);
+}
+
+/* ========================================
+   HERO SEKCIJA
+======================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        var(--bijela) 0%,
+        var(--svijetlo-siva) 50%,
+        var(--siva-1) 100%
+    );
+    overflow: hidden;
+    padding-top: 72px;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 40px 24px;
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--siva-4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--gotovo-crna);
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    color: var(--siva-4);
+    margin-bottom: 40px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Dekorativni krugovi */
+.hero-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+}
+
+.circle-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--plava);
+    top: -200px;
+    right: -150px;
+}
+
+.circle-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--tamno-siva);
+    bottom: -100px;
+    left: -100px;
+}
+
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    background: var(--plava-tamna);
+    top: 40%;
+    left: 10%;
+    opacity: 0.05;
+}
+
+/* ========================================
+   USLUGE SEKCIJA
+======================================== */
+.usluge {
+    background-color: var(--bijela);
+    border-top: 1px solid var(--siva-1);
+}
+
+.usluge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-top: 20px;
+}
+
+.usluga-card {
+    background-color: var(--svijetlo-siva);
+    border: 1px solid var(--siva-1);
+    border-radius: var(--border-radius-lg);
+    padding: 36px 28px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.usluga-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--plava), var(--plava-tamna));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.usluga-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(59, 130, 246, 0.2);
+    background-color: var(--bijela);
+}
+
+.usluga-card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-icon {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.usluga-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gotovo-crna);
+    margin-bottom: 12px;
+}
+
+.usluga-card p {
+    color: var(--siva-4);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ========================================
+   O NAMA SEKCIJA
+======================================== */
+.o-nama {
+    background-color: var(--svijetlo-siva);
+    border-top: 1px solid var(--siva-1);
+    border-bottom: 1px solid var(--siva-1);
+}
+
+.o-nama-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.o-nama-text p {
+    color: var(--siva-4);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.o-nama-text .section-title {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+/* Statistike */
+.statistike {
+    display: flex;
+    gap: 32px;
+    margin-top: 36px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 24px;
+    background: var(--bijela);
+    border: 1px solid var(--siva-1);
+    border-radius: var(--border-radius);
+    flex: 1;
+    transition: var(--transition);
+}
+
+.stat:hover {
+    border-color: var(--plava);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+}
+
+.stat-broj {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--plava);
+}
+
+.stat-tekst {
+    font-size: 0.8rem;
+    color: var(--siva-4);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* Vizual */
+.visual-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bijela);
+    border: 2px solid var(--siva-1);
+    border-radius: var(--border-radius-lg);
+    padding: 60px 40px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.visual-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--plava), var(--plava-tamna));
+}
+
+.visual-logo {
+    width: 80%;
+    max-width: 280px;
+    height: auto;
+    filter: brightness(0);
+    opacity: 0.85;
+}
+
+/* ========================================
+   KONTAKT SEKCIJA
+======================================== */
+.kontakt {
+    background-color: var(--bijela);
+}
+
+.kontakt-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.kontakt-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.kontakt-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background-color: var(--svijetlo-siva);
+    border: 1px solid var(--siva-1);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.kontakt-item:hover {
+    border-color: var(--plava);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+}
+
+.kontakt-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.kontakt-item strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: var(--plava);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.kontakt-item p {
+    color: var(--siva-4);
+    font-size: 0.95rem;
+}
+
+/* Forma */
+.kontakt-forma {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.forma-group {
+    width: 100%;
+}
+
+.forma-input,
+.forma-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: var(--svijetlo-siva);
+    border: 1.5px solid var(--siva-1);
+    border-radius: var(--border-radius);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--tamno-siva);
+    transition: var(--transition);
+    outline: none;
+    resize: none;
+}
+
+.forma-input:focus,
+.forma-textarea:focus {
+    border-color: var(--plava);
+    background-color: var(--bijela);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.forma-input::placeholder,
+.forma-textarea::placeholder {
+    color: var(--siva-3);
+}
+
+.forma-textarea {
+    min-height: 140px;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+.footer {
+    background-color: var(--crna);
+    color: var(--siva-2);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Footer gornji dio */
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.8fr;
+    gap: 60px;
+    padding: 60px 0 40px;
+}
+
+/* Brand / Logo dio */
+.footer-brand {
+    display: left;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-logo {
+    height: 75px;
+    width: auto;
+    opacity: 0.9;
+    transition: var(--transition);
+}
+
+.footer-logo:hover {
+    filter: brightness(0) invert(40%) sepia(90%) 
+            saturate(500%) hue-rotate(200deg);
+    opacity: 1;
+}
+
+.footer-opis {
+    color: var(--siva-3);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    max-width: 280px;
+}
+
+/* Footer linkovi */
+.footer-naslov {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--bijela);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--siva-3);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    display: inline-block;
+    padding: 2px 0;
+}
+
+.footer-links a:hover {
+    color: var(--plava-svijetla);
+    transform: translateX(4px);
+}
+
+/* Društvene mreže */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.social-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition);
+}
+
+.social-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* TikTok hover */
+.social-card.tiktok:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Instagram hover */
+.social-card.instagram:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+.social-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.social-svg {
+    width: 20px;
+    height: 20px;
+    color: var(--bijela);
+}
+
+.social-card.instagram:hover .social-svg {
+    color: var(--plava-svijetla);
+}
+
+.social-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.social-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--bijela);
+}
+
+.social-handle {
+    font-size: 0.78rem;
+    color: var(--siva-3);
+}
+
+/* Footer donji dio */
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+}
+
+.footer-bottom {
+    padding-bottom: 32px;
+}
+
+.footer-bottom-content {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-copyright {
+    font-size: 0.85rem;
+    color: var(--siva-3);
+}
+
+.footer-copyright .highlight {
+    color: var(--plava-svijetla);
+}
+
+.footer-made {
+    font-size: 0.85rem;
+    color: var(--siva-4);
+}
+
+/* ========================================
+   RESPONZIVNOST
+======================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .o-nama-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .o-nama-text .section-title {
+        text-align: center;
+    }
+
+    .visual-box {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-opis {
+        max-width: 100%;
+    }
+}
+
+/* Mobitel */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 16px;
+    }
+
+    .nav-list {
+        gap: 4px;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .statistike {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .kontakt-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 40px 0 30px;
+    }
+
+    .footer-brand {
+        grid-column: 1;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-container {
+        padding: 60px 16px;
+    }
+}
+
+/* Mali mobilni */
+@media (max-width: 480px) {
+    .logo {
+        height: 36px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .usluge-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .statistike {
+        flex-direction: column;
+    }
+
+    .stat {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+    }
+}
+
+/* Stil za Hamburger ikonu */
+.mobile-menu-toggle {
+    display: none; /* Skriveno na desktopu */
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--plava);
+    transition: var(--transition);
+}
+
+/* Stil za navigaciju na mobitelu */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex; /* Prikazuje se samo na mobitelu */
+    }
+
+    .nav-list {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Skriveno desno izvan ekrana */
+        width: 80%;
+        height: 100vh;
+        background-color: var(--bijela);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    /* Klasa koju JS dodaje kad kliknemo */
+    .nav-list.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    /* Animacija hamburgera u 'X' kad je otvoren */
+    .mobile-menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .mobile-menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+/* ========================================
+   POPRAVAK ZA VISUAL BOX (SLIKA O NAMA)
+======================================== */
+
+.visual-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bijela);
+    border: 2px solid var(--siva-1);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;            /* Smanjen padding da slika ima više mjesta */
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;        /* Osigurava minimalnu visinu okvira */
+    width: 100%;              /* Širina okvira prati roditeljski kontejner */
+}
+
+.visual-logo {
+    width: 100%;              /* Slika će se raširiti do rubova okvira... */
+    max-width: 400px;         /* ...ali neće ići preko 400px širine */
+    height: auto;             /* Zadržava originalne proporcije */
+    object-fit: contain;      /* KLJUČNO: Osigurava da cijela slika stane unutar okvira bez rezanja */
+    filter: none;             /* Uklanjamo filter da se logo vidi u boji */
+    opacity: 1;               /* Puna vidljivost */
+    transition: var(--transition);
+}
+
+/* Responzivno prilagođavanje za mobitele */
+@media (max-width: 768px) {
+    .visual-box {
+        min-height: 200px;    /* Nešto niži okvir na manjim ekranima */
+        padding: 10px;
+    }
+}
