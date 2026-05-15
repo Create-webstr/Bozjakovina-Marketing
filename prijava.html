@@ -153,102 +153,61 @@
         });
     </script>
 <script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+const SHEETDB_URL = "https://sheetdb.io/api/v1/ju7fsajt596m3"; // OVDJE ZALIJEPI SVOJ URL
 
-<script>
-    // 2. TVOJA KONFIGURACIJA (Podaci koje si upravo poslao)
-    const firebaseConfig = {
-        apiKey: "AIzaSyCcaZGobFD4ATNlVmaGb4IjClQ-Jrl_Jyw",
-        authDomain: "bozjakovina-marketing.firebaseapp.com",
-        databaseURL: "https://bozjakovina-marketing-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "bozjakovina-marketing",
-        storageBucket: "bozjakovina-marketing.firebasestorage.app",
-        messagingSenderId: "721031657598",
-        appId: "1:721031657598:web:b94d0b66626d28cb16c02f",
-        measurementId: "G-SN3MLEKLZY"
+// --- REGISTRACIJA ---
+document.querySelector('#register-form form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const podaci = {
+        ime: this.querySelector('input[placeholder="Ime i prezime"]').value,
+        email: this.querySelector('input[type="email"]').value,
+        lozinka: this.querySelector('input[placeholder="Smislite lozinku"]').value
     };
 
-    // 3. INICIJALIZACIJA (Na način koji preglednik razumije)
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    fetch(SHEETDB_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [podaci] })
+    })
+    .then(res => {
+        alert("Uspješno spremljeno u tablicu! Sad se prijavi.");
+        toggleAuth();
+        this.reset();
+    })
+    .catch(err => alert("Greška: " + err));
+});
 
-    console.log("Firebase spreman s tvojim podacima!");
+// --- PRIJAVA ---
+document.querySelector('#login-form form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const emailInput = this.querySelector('input[type="email"]').value;
+    const lozinkaInput = this.querySelector('input[placeholder="Lozinka"]').value;
 
-    // --- LOGIKA ZA REGISTRACIJU ---
-    const registerForm = document.querySelector('#register-form form');
-    if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const ime = registerForm.querySelector('input[placeholder="Ime i prezime"]').value;
-            const email = registerForm.querySelector('input[type="email"]').value;
-            const password = registerForm.querySelector('input[placeholder="Smislite lozinku"]').value;
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Spremamo tvoje ime u profil
-                    return userCredential.user.updateProfile({ displayName: ime });
-                })
-                .then(() => {
-                    toggleAuth(); // Prebaci na prijavu
-                    registerForm.reset();
-                })
-                .catch((error) => alert("Greška kod registracije: " + error.message));
-        });
-    }
-
-    // --- LOGIKA ZA PRIJAVU ---
-    const loginForm = document.querySelector('#login-form form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = loginForm.querySelector('input[type="email"]').value;
-            const password = loginForm.querySelector('input[placeholder="Lozinka"]').value;
-
-            auth.signInWithEmailAndPassword(email, password)
-                .then(() => {
-                    window.location.href = "index.html"; // Šalji na početnu
-                })
-                .catch((error) => alert("Greška kod prijave: " + error.message));
-        });
-    }
-
-    // --- STATUS U HEADERU ---
-    auth.onAuthStateChanged((user) => {
-        const authStatus = document.getElementById('auth-status');
-        if (authStatus) {
-            if (user) {
-                authStatus.innerHTML = `
-                    <span style="margin-right:15px; font-weight:700;">Bok, ${user.displayName || 'Korisnik'}</span>
-                    <a href="#" onclick="logout()" style="color:red; font-size:0.8rem; font-weight:bold; cursor:pointer;">Odjava</a>
-                `;
-            } else {
-                authStatus.innerHTML = `<a href="prijava.html" class="btn-prijava">Prijava</a>`;
-            }
-        }
-    });
-
-    // DODATNE FUNKCIJE
-    function logout() {
-        auth.signOut().then(() => window.location.reload());
-    }
-
-    function toggleAuth() {
-        const login = document.getElementById('login-form');
-        const register = document.getElementById('register-form');
-        if (login.style.display === 'none') {
-            login.style.display = 'block';
-            register.style.display = 'none';
+    // Tražimo korisnika u tablici
+    fetch(SHEETDB_URL + "/search?email=" + emailInput)
+    .then(res => res.json())
+    .then(data => {
+        if (data.length > 0 && data[0].lozinka === lozinkaInput) {
+            localStorage.setItem('korisnikIme', data[0].ime); // Spremamo ime u memoriju preglednika
+            window.location.href = "index.html";
         } else {
-            login.style.display = 'none';
-            register.style.display = 'block';
+            alert("Krivi email ili lozinka!");
         }
-    }
-// Funkcija za odjavu
-function logout() {
-    auth.signOut().then(() => {
-        window.location.reload();
     });
+});
+
+// --- PRIKAZ IMENA U HEADERU ---
+const spremljenoIme = localStorage.getItem('korisnikIme');
+const authStatus = document.getElementById('auth-status');
+if (spremljenoIme && authStatus) {
+    authStatus.innerHTML = `<span>Bok, ${spremljenoIme}</span> <a href="#" onclick="odjava()">Odjava</a>`;
+}
+
+function odjava() {
+    localStorage.removeItem('korisnikIme');
+    location.reload();
 }
 </script>
 </body>
