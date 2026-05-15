@@ -153,24 +153,24 @@
         });
     </script>
 <script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
-// Tvoja konfiguracija (ostaje ista)
-const firebaseConfig = {
-  apiKey: "AIzaSyCcaZGobFD4ATNlVmaGb4IjClQ-Jrl_Jyw",
-  authDomain: "bozjakovina-marketing.firebaseapp.com",
-  projectId: "bozjakovina-marketing",
-  storageBucket: "bozjakovina-marketing.firebasestorage.app",
-  messagingSenderId: "721031657598",
-  appId: "1:721031657598:web:b94d0b66626d28cb16c02f",
-  measurementId: "G-SN3MLEKLZY"
-};
+  // Tvoj config ide ISPOD ovih linija
+  const firebaseConfig = {
+      apiKey: "AIzaSyCcaZGobFD4ATNlVmaGb4IjClQ-Jrl_Jyw",
+      authDomain: "bozjakovina-marketing.firebaseapp.com",
+      projectId: "bozjakovina-marketing",
+      storageBucket: "bozjakovina-marketing.firebasestorage.app",
+      messagingSenderId: "721031657598",
+      appId: "1:721031657598:web:b94d0b66626d28cb16c02f",
+      measurementId: "G-SN3MLEKLZY"
+  };
 
-// Inicijalizacija Firebase-a
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+  // Inicijalizacija mora biti ovakva za "compat" verziju:
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
 // --- REGISTRACIJA ---
 const registerForm = document.querySelector('#register-form form');
