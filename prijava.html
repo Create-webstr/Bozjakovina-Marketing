@@ -167,6 +167,45 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+// Funkcija za Registraciju
+const registerForm = document.querySelector('#register-form form');
+registerForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Zaustavlja osvježavanje stranice
+
+    const email = registerForm.querySelector('input[type="email"]').value;
+    const password = registerForm.querySelector('input[type="password"]').value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Uspješno kreiran račun
+            alert("Račun uspješno kreiran! Sada se možete prijaviti.");
+            toggleAuth(); // Prebaci korisnika na formu za prijavu
+        })
+        .catch((error) => {
+            // Prikaz greške (npr. preslaba lozinka ili mail već postoji)
+            alert("Greška kod registracije: " + error.message);
+        });
+});
+
+// Funkcija za Prijavu
+const loginForm = document.querySelector('#login-form form');
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = loginForm.querySelector('input[type="email"]').value;
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Uspješna prijava
+            alert("Uspješno ste se prijavili!");
+            window.location.href = "index.html"; // Preusmjeri korisnika na početnu
+        })
+        .catch((error) => {
+            alert("Pogreška kod prijave: " + error.message);
+        });
+});
 </script>
 </body>
 </html>
