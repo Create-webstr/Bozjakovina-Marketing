@@ -180,7 +180,8 @@
         </div>
     </footer>
     <!-- JS ZA MOBILNI IZBORNIK -->
-    <script>
+   <script>
+        // Mobilni izbornik lakša navigacija
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const navList = document.querySelector('.nav-list');
 
@@ -189,11 +190,14 @@
             navList.classList.toggle('active');
         });
 
-        auth.onAuthStateChanged((user) => {
-    const authStatus = document.getElementById('auth-status');
-    if (user) {
-   
-     // Provjera jeli korisnik prijavljen (preko localStorage) čim se stranica učita
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+
+        // Provjera jeli korisnik prijavljen (preko localStorage) čim se stranica učita
         window.onload = function() {
             const spremljenoIme = localStorage.getItem('korisnikIme');
             const authStatus = document.getElementById('auth-status');
@@ -213,7 +217,6 @@
             localStorage.removeItem('korisnikIme'); // Briše ime iz memorije browsera
             location.reload(); // Osvježava stranicu da ponovno prikaže gumb "Prijava"
         }
-
-</script>
+    </script>
 </body>
 </html>
