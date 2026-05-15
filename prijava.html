@@ -154,83 +154,96 @@
     </script>
 <script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
-<script>
-  // Tvoj config ide ISPOD ovih linija
-  const firebaseConfig = {
-      apiKey: "AIzaSyCcaZGobFD4ATNlVmaGb4IjClQ-Jrl_Jyw",
-      authDomain: "bozjakovina-marketing.firebaseapp.com",
-      projectId: "bozjakovina-marketing",
-      storageBucket: "bozjakovina-marketing.firebasestorage.app",
-      messagingSenderId: "721031657598",
-      appId: "1:721031657598:web:b94d0b66626d28cb16c02f",
-      measurementId: "G-SN3MLEKLZY"
-  };
+    <script>
+        // 2. Tvoja konfiguracija
+        const firebaseConfig = {
+            apiKey: "AIzaSyCcaZGobFD4ATNlVmaGb4IjClQ-Jrl_Jyw",
+            authDomain: "bozjakovina-marketing.firebaseapp.com",
+            projectId: "bozjakovina-marketing",
+            storageBucket: "bozjakovina-marketing.firebasestorage.app",
+            messagingSenderId: "721031657598",
+            appId: "1:721031657598:web:b94d0b66626d28cb16c02f",
+            measurementId: "G-SN3MLEKLZY"
+        };
 
-  // Inicijalizacija mora biti ovakva za "compat" verziju:
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
+        // 3. Inicijalizacija (provjera da se skripta učitala)
+        if (typeof firebase !== 'undefined') {
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            console.log("Firebase uspješno povezan!");
 
-// --- REGISTRACIJA ---
-const registerForm = document.querySelector('#register-form form');
-registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+            // --- REGISTRACIJA ---
+            const registerForm = document.querySelector('#register-form form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const ime = registerForm.querySelector('input[placeholder="Ime i prezime"]').value;
+                    const email = registerForm.querySelector('input[type="email"]').value;
+                    const password = registerForm.querySelector('input[placeholder="Smislite lozinku"]').value;
 
-    const ime = registerForm.querySelector('input[placeholder="Ime i prezime"]').value;
-    const email = registerForm.querySelector('input[type="email"]').value;
-    const password = registerForm.querySelector('input[placeholder="Smislite lozinku"]').value;
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .then((userCredential) => {
+                            return userCredential.user.updateProfile({ displayName: ime });
+                        })
+                        .then(() => {
+                            toggleAuth(); 
+                            registerForm.reset();
+                        })
+                        .catch((error) => alert("Greška: " + error.message));
+                });
+            }
 
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Spremamo ime u profil korisnika
-            return userCredential.user.updateProfile({
-                displayName: ime
+            // --- PRIJAVA ---
+            const loginForm = document.querySelector('#login-form form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = loginForm.querySelector('input[type="email"]').value;
+                    const password = loginForm.querySelector('input[placeholder="Lozinka"]').value;
+
+                    auth.signInWithEmailAndPassword(email, password)
+                        .then(() => { window.location.href = "index.html"; })
+                        .catch((error) => alert("Greška: " + error.message));
+                });
+            }
+
+            // --- STATUS U HEADERU ---
+            auth.onAuthStateChanged((user) => {
+                const authStatus = document.getElementById('auth-status');
+                if (authStatus) {
+                    if (user) {
+                        authStatus.innerHTML = `
+                            <span style="margin-right:15px; font-weight:700;">Bok, ${user.displayName || 'Korisnik'}</span>
+                            <a href="#" onclick="logout()" style="color:red; font-size:0.8rem; font-weight:bold;">Odjava</a>
+                        `;
+                    } else {
+                        authStatus.innerHTML = `<a href="prijava.html" class="btn-prijava">Prijava</a>`;
+                    }
+                }
             });
-        })
-        .then(() => {
-            // Automatski prebacuje na prijavu bez alert poruke
-            toggleAuth(); 
-            registerForm.reset();
-        })
-        .catch((error) => {
-            alert("Greška kod registracije: " + error.message);
-        });
-});
 
-// --- PRIJAVA ---
-const loginForm = document.querySelector('#login-form form');
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+        } else {
+            console.error("Greška: Firebase biblioteka nije učitana!");
+        }
 
-    const email = loginForm.querySelector('input[type="email"]').value;
-    const password = loginForm.querySelector('input[placeholder="Lozinka"]').value;
+        // Funkcije izvan glavnog bloka
+        function logout() {
+            firebase.auth().signOut().then(() => window.location.reload());
+        }
 
-    auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-            // Uspjeh - šalji na početnu
-            window.location.href = "index.html";
-        })
-        .catch((error) => {
-            alert("Pogrešni podaci ili korisnik ne postoji.");
-        });
-});
-
-// --- PRAĆENJE STATUSA PRIJAVE (Header) ---
-auth.onAuthStateChanged((user) => {
-    const authStatus = document.getElementById('auth-status');
-    if (!authStatus) return; // Sigurnosna provjera
-
-    if (user) {
-        authStatus.innerHTML = `
-            <span style="margin-right:15px; font-weight:700;">Bok, ${user.displayName || 'Korisnik'}</span>
-            <a href="#" onclick="logout()" style="color:red; font-size:0.8rem; font-weight:bold; cursor:pointer;">Odjava</a>
-        `;
-    } else {
-        authStatus.innerHTML = `<a href="prijava.html" class="btn-prijava">Prijava</a>`;
-    }
-});
-
+        function toggleAuth() {
+            const login = document.getElementById('login-form');
+            const register = document.getElementById('register-form');
+            if (login.style.display === 'none') {
+                login.style.display = 'block';
+                register.style.display = 'none';
+            } else {
+                login.style.display = 'none';
+                register.style.display = 'block';
+            }
+        }
 // Funkcija za odjavu
 function logout() {
     auth.signOut().then(() => {
