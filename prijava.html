@@ -69,6 +69,9 @@
                 <span class="bar"></span>
             </button>
         </div>
+    <div class="header-actions" id="auth-status">
+    <a href="prijava.html" class="btn-prijava">Prijava</a>
+    </div>
     </header>
 
     <main class="auth-section section-container">
@@ -174,21 +177,24 @@ const registerForm = document.querySelector('#register-form form');
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const ime = registerForm.querySelector('input[placeholder="Ime i prezime"]').value;
     const email = registerForm.querySelector('input[type="email"]').value;
     const password = registerForm.querySelector('input[type="password"]').value;
 
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // USPIJEH: Samo prebaci na formu za prijavu, bez alert poruke
+            // Spremamo ime u profil korisnika u Firebase-u
+            return userCredential.user.updateProfile({
+                displayName: ime
+            });
+        })
+        .then(() => {
+            // Kad je ime spremljeno, prebaci na prijavu
             toggleAuth(); 
-            // Opcionalno: očisti polja forme
             registerForm.reset();
         })
         .catch((error) => {
-            // Ovdje ipak ostavljamo alert samo ako dođe do GREŠKE 
-            // (npr. prekratka lozinka ili mail već postoji)
-            console.error("Greška:", error.code);
-            alert("Problem: " + error.message);
+            alert(error.message);
         });
 });
 
