@@ -215,6 +215,27 @@ loginForm.addEventListener('submit', (e) => {
             alert("Neispravni podaci za prijavu.");
         });
 });
+
+    auth.onAuthStateChanged((user) => {
+    const authStatus = document.getElementById('auth-status');
+    if (user) {
+        // Korisnik je prijavljen
+        authStatus.innerHTML = `
+            <span style="margin-right:15px; font-weight:700;">Bok, ${user.displayName || 'Korisnik'}</span>
+            <a href="#" onclick="logout()" style="color:red; font-size:0.8rem;">Odjava</a>
+        `;
+    } else {
+        // Korisnik nije prijavljen - vrati gumb Prijava
+        authStatus.innerHTML = `<a href="prijava.html" class="btn-prijava">Prijava</a>`;
+    }
+});
+
+// Funkcija za odjavu
+function logout() {
+    auth.signOut().then(() => {
+        window.location.reload();
+    });
+}
 </script>
 </body>
 </html>
