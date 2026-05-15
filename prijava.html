@@ -151,5 +151,22 @@
             navList.classList.toggle('active');
         });
     </script>
+<script>
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCcaZGobFD4ATNlVmaGb4IjClQ-Jrl_Jyw",
+  authDomain: "bozjakovina-marketing.firebaseapp.com",
+  projectId: "bozjakovina-marketing",
+  storageBucket: "bozjakovina-marketing.firebasestorage.app",
+  messagingSenderId: "721031657598",
+  appId: "1:721031657598:web:b94d0b66626d28cb16c02f",
+  measurementId: "G-SN3MLEKLZY"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
