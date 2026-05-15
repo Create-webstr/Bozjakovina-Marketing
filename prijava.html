@@ -169,27 +169,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Funkcija za Registraciju
+// --- REGISTRACIJA ---
 const registerForm = document.querySelector('#register-form form');
 registerForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Zaustavlja osvježavanje stranice
+    e.preventDefault();
 
     const email = registerForm.querySelector('input[type="email"]').value;
     const password = registerForm.querySelector('input[type="password"]').value;
 
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Uspješno kreiran račun
-            alert("Račun uspješno kreiran! Sada se možete prijaviti.");
-            toggleAuth(); // Prebaci korisnika na formu za prijavu
+            // USPIJEH: Samo prebaci na formu za prijavu, bez alert poruke
+            toggleAuth(); 
+            // Opcionalno: očisti polja forme
+            registerForm.reset();
         })
         .catch((error) => {
-            // Prikaz greške (npr. preslaba lozinka ili mail već postoji)
-            alert("Greška kod registracije: " + error.message);
+            // Ovdje ipak ostavljamo alert samo ako dođe do GREŠKE 
+            // (npr. prekratka lozinka ili mail već postoji)
+            console.error("Greška:", error.code);
+            alert("Problem: " + error.message);
         });
 });
 
-// Funkcija za Prijavu
+// --- PRIJAVA ---
 const loginForm = document.querySelector('#login-form form');
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -199,12 +202,11 @@ loginForm.addEventListener('submit', (e) => {
 
     auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Uspješna prijava
-            alert("Uspješno ste se prijavili!");
-            window.location.href = "index.html"; // Preusmjeri korisnika na početnu
+            // USPIJEH: Odmah šalji na početnu
+            window.location.href = "index.html";
         })
         .catch((error) => {
-            alert("Pogreška kod prijave: " + error.message);
+            alert("Neispravni podaci za prijavu.");
         });
 });
 </script>
