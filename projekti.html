@@ -25,9 +25,9 @@
                     <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
                 </ul>
             </nav>
-            <div class="header-actions">
-            <a href="prijava.html" class="btn-prijava">Prijava</a>
-            </div>
+    <div class="header-actions" id="auth-status">
+    <a href="prijava.html" class="btn-prijava">Prijava</a>
+    </div>
             <button class="mobile-menu-toggle" aria-label="Otvori izbornik">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -194,23 +194,27 @@
         auth.onAuthStateChanged((user) => {
     const authStatus = document.getElementById('auth-status');
     if (user) {
-        // Korisnik je prijavljen
-        authStatus.innerHTML = `
-            <span style="margin-right:15px; font-weight:700;">Bok, ${user.displayName || 'Korisnik'}</span>
-            <a href="#" onclick="logout()" style="color:red; font-size:0.8rem;">Odjava</a>
-        `;
-    } else {
-        // Korisnik nije prijavljen - vrati gumb Prijava
-        authStatus.innerHTML = `<a href="prijava.html" class="btn-prijava">Prijava</a>`;
-    }
-});
+        <script>
+    // Ova funkcija se pokreće čim se stranica učita
+    window.onload = function() {
+        const spremljenoIme = localStorage.getItem('korisnikIme');
+        const authStatus = document.getElementById('auth-status');
 
-// Funkcija za odjavu
-function logout() {
-    auth.signOut().then(() => {
-        window.location.reload();
-    });
-}
-    </script>
+        if (spremljenoIme && authStatus) {
+            // Ako je korisnik prijavljen, prikaži ime i gumb za odjavu
+            authStatus.innerHTML = `
+                <span style="margin-right:15px; font-weight:700; color: var(--tamno-siva);">Bok, ${spremljenoIme}</span>
+                <a href="#" onclick="odjava()" style="color:red; font-size:0.8rem; font-weight:bold; text-decoration:none;">Odjava</a>
+            `;
+        }
+    };
+
+    // Funkcija za odjavu
+    function odjava() {
+        localStorage.removeItem('korisnikIme'); // Briše ime iz memorije
+        location.reload(); // Osvježava stranicu da se vrati gumb "Prijava"
+    }
+
+</script>
 </body>
 </html>
