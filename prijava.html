@@ -5,23 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prijava | Božjakovina Marketing</title>
     <link rel="stylesheet" href="style12.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        .auth-section { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding-top: 150px; }
-        .auth-container { width: 100%; max-width: 450px; background: var(--svijetlo-siva, #f4f4f4); padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        #register-form { display: none; }
-        .auth-toggle-text { text-align: center; margin-top: 20px; cursor: pointer; color: var(--plava, #007bff); font-weight: 700; }
-        .forma-input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        /* Tvoj originalni dizajn */
+        .auth-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 180px; 
+            padding-bottom: 80px;
+        }
+        .auth-container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--svijetlo-siva);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--siva-1);
+            box-shadow: var(--shadow);
+        }
+        .auth-toggle-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--siva-4);
+        }
+        .auth-toggle-text a {
+            color: var(--plava);
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .auth-toggle-text a:hover {
+            text-decoration: underline;
+        }
+        #register-form {
+            display: none;
+        }
     </style>
 </head>
-<body class="pocetna-stranica">
-
+<body class="pocetna-stranica"> 
     <header class="header">
         <div class="header-container">
             <a href="index.html" class="logo-wrapper">
-                <img src="logo.png" alt="Logo" class="logo">
+                <img src="logo.png" alt="Božjakovina Marketing Logo" class="logo">
                 <div class="logo-text">Božjakovina <span>Marketing</span></div>
             </a>
+
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html" class="nav-link">Početna</a></li>
@@ -33,45 +64,86 @@
             <div class="header-actions" id="auth-status">
                 <a href="prijava.html" class="btn-prijava">Prijava</a>
             </div>
+            <button class="mobile-menu-toggle" aria-label="Otvori izbornik">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
-    <main class="auth-section">
+    <main class="auth-section section-container">
         <div class="auth-container">
             
             <div id="login-form">
-                <h2 style="text-align:center;">Prijava</h2>
+                <h2 class="section-title" style="font-size: 2rem;">Prijava</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: var(--siva-4);">Dobrodošli natrag!</p>
+                
                 <form class="kontakt-forma">
-                    <input type="email" class="forma-input" placeholder="Email adresa" required>
-                    <input type="password" class="forma-input" placeholder="Lozinka" required>
+                    <div class="forma-group">
+                        <input type="email" class="forma-input" placeholder="Email adresa" required>
+                    </div>
+                    <div class="forma-group">
+                        <input type="password" class="forma-input" placeholder="Lozinka" required>
+                    </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Prijavi se</button>
                 </form>
-                <p class="auth-toggle-text" onclick="toggleAuth()">Nemaš račun? Registriraj se</p>
+                
+                <p class="auth-toggle-text">
+                    Nemaš račun? <a onclick="toggleAuth()">Registriraj se</a>
+                </p>
             </div>
 
             <div id="register-form">
-                <h2 style="text-align:center;">Registracija</h2>
+                <h2 class="section-title" style="font-size: 2rem;">Registracija</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: var(--siva-4);">Postani dio naše zajednice.</p>
+                
                 <form class="kontakt-forma">
-                    <input type="text" class="forma-input" placeholder="Ime i prezime" required>
-                    <input type="email" class="forma-input" placeholder="Email adresa" required>
-                    <input type="password" class="forma-input" placeholder="Smislite lozinku" required>
+                    <div class="forma-group">
+                        <input type="text" class="forma-input" placeholder="Ime i prezime" required>
+                    </div>
+                    <div class="forma-group">
+                        <input type="email" class="forma-input" placeholder="Email adresa" required>
+                    </div>
+                    <div class="forma-group">
+                        <input type="password" class="forma-input" placeholder="Smislite lozinku" required>
+                    </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Kreiraj račun</button>
                 </form>
-                <p class="auth-toggle-text" onclick="toggleAuth()">Već imaš račun? Prijavi se</p>
+                
+                <p class="auth-toggle-text">
+                    Već imaš račun? <a onclick="toggleAuth()">Prijavi se</a>
+                </p>
             </div>
 
         </div>
     </main>
 
-    <script>
-        // --- POSTAVKE ---
-        const SHEETDB_URL = "https://sheetdb.io/api/v1/ju7fsajt596m3"; 
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright" style="text-align: center; width: 100%;">
+                    © 2026 <span class="highlight">Božjakovina Marketing</span>. Sva prava pridržana.
+                </p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // TVOJ SHEETDB URL
+        const SHEETDB_URL = "TVOJ_SHEETDB_API_URL";
+
+        // Prebacivanje između Prijava i Registracija
         function toggleAuth() {
             const login = document.getElementById('login-form');
             const register = document.getElementById('register-form');
-            login.style.display = (login.style.display === 'none') ? 'block' : 'none';
-            register.style.display = (register.style.display === 'none') ? 'block' : 'none';
+            if (login.style.display === 'none') {
+                login.style.display = 'block';
+                register.style.display = 'none';
+            } else {
+                login.style.display = 'none';
+                register.style.display = 'block';
+            }
         }
 
         // --- REGISTRACIJA ---
@@ -88,8 +160,8 @@
                 body: JSON.stringify({ data: [{ ime, email, lozinka }] })
             })
             .then(res => res.json())
-            .then(() => {
-                alert("Registracija uspješna!");
+            .then(data => {
+                alert("Registracija uspješna! Sad se prijavi.");
                 toggleAuth();
                 regForm.reset();
             })
@@ -103,29 +175,39 @@
             const emailIn = logForm.querySelector('input[type="email"]').value;
             const lozinkaIn = logForm.querySelector('input[type="password"]').value;
 
-            fetch(`${SHEETDB_URL}/search?email=${emailIn}`)
+            fetch(SHEETDB_URL + "/search?email=" + emailIn)
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0 && data[0].lozinka === lozinkaIn) {
                     localStorage.setItem('korisnikIme', data[0].ime);
                     window.location.href = "index.html";
                 } else {
-                    alert("Krivi podaci!");
+                    alert("Krivi podaci za prijavu.");
                 }
             });
         });
 
-        // --- STATUS U HEADERU ---
-        const spremljenoIme = localStorage.getItem('korisnikIme');
-        if (spremljenoIme) {
-            document.getElementById('auth-status').innerHTML = 
-                `<span>Bok, ${spremljenoIme}</span> | <a href="#" onclick="logout()" style="color:red;">Odjava</a>`;
-        }
+        // --- PROVJERA PRIJAVE ZA HEADER ---
+        window.onload = function() {
+            const spremljenoIme = localStorage.getItem('korisnikIme');
+            const authStatus = document.getElementById('auth-status');
+            if (spremljenoIme && authStatus) {
+                authStatus.innerHTML = `<span style="margin-right:10px; font-weight:700;">Bok, ${spremljenoIme}</span> <a href="#" onclick="odjava()" style="color:red; font-size:0.8rem;">Odjava</a>`;
+            }
+        };
 
-        function logout() {
+        function odjava() {
             localStorage.removeItem('korisnikIme');
             location.reload();
         }
+
+        // Mobilni menu
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
