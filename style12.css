@@ -1020,3 +1020,46 @@ body {
         padding-top: 110px !important;
     }
 }
+
+/* Stil za gumb u headeru */
+.header-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.btn-prijava {
+    background-color: var(--plava);
+    color: var(--bijela);
+    padding: 10px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    border: 2px solid var(--plava);
+}
+
+.btn-prijava:hover {
+    background-color: transparent;
+    color: var(--plava);
+}
+
+/* PRILAGODBA ZA MOBITELE */
+@media (max-width: 768px) {
+    /* Gumb ostaje vidljiv pored hamburgera, ali ga malo smanjimo */
+    .btn-prijava {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+        margin-right: 10px; /* Razmak od hamburgera */
+    }
+    
+    .header-actions {
+        margin-left: auto; /* Gura gumb prema desno, do hamburgera */
+    }
+    
+    /* Sakrij originalni link Prijave u padajućem meniju ako je ostao */
+    .nav-list a[href="prijava.html"] {
+        display: none;
+    }
+}
