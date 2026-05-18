@@ -184,6 +184,7 @@
             .then(data => {
                 if (data.length > 0 && data[0].lozinka === lozinkaIn) {
                     localStorage.setItem('korisnikIme', data[0].ime);
+                    localStorage.setItem('korisnikEmail', emailIn);
                     window.location.href = "index.html";
                 } else {
                     alert("Krivi podaci za prijavu.");
