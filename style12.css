@@ -1083,3 +1083,10 @@ body {
         margin-right: 0 !important; /* Popravlja razmak jer gumba više nema */
     }
 }
+
+/* Sakrij mobilnu odjavu na desktopu */
+@media (min-width: 769px) {
+    #mobile-logout {
+        display: none !important;
+    }
+}
