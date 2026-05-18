@@ -81,23 +81,23 @@
             </div>
 
             <!-- Obrazac s desne strane -->
-            <div class="kontakt-forma-container" style="background: var(--svijetlo-siva); padding: 40px; border-radius: var(--border-radius-lg); border: 1px solid var(--siva-1);">
-                <form action="#" class="kontakt-forma">
-                    <div class="forma-group">
-                        <input type="text" class="forma-input" placeholder="Vaše Ime i Prezime" required>
-                    </div>
-                    <div class="forma-group">
-                        <input type="email" class="forma-input" placeholder="Vaša Email Adresa" required>
-                    </div>
-                    <div class="forma-group">
-                        <input type="text" class="forma-input" placeholder="Predmet upita">
-                    </div>
-                    <div class="forma-group">
-                        <textarea class="forma-textarea" placeholder="Vaša poruka..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Pošalji Poruku</button>
-                </form>
-            </div>
+           <div class="kontakt-forma-container" style="background: var(--svijetlo-siva); padding: 40px; border-radius: var(--border-radius-lg); border: 1px solid var(--siva-1);">
+    <form action="#" class="kontakt-forma">
+        <div class="forma-group">
+            <input type="text" id="kontakt-ime" class="forma-input" placeholder="Vaše Ime i Prezime" required>
+        </div>
+        <div class="forma-group">
+            <input type="email" id="kontakt-email" class="forma-input" placeholder="Vaša Email Adresa" required>
+        </div>
+        <div class="forma-group">
+            <input type="text" class="forma-input" placeholder="Predmet upita">
+        </div>
+        <div class="forma-group">
+            <textarea class="forma-textarea" placeholder="Vaša poruka..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Pošalji Poruku</button>
+    </form>
+</div>
 
         </div>
     </section>
@@ -238,8 +238,31 @@ function odjava(event) {
         function odjava(event) {
             if(event) event.preventDefault(); // Sprječava skakanje stranice na vrh zbog '#' linka
             localStorage.removeItem('korisnikIme'); // Briše ime iz memorije browsera
-            location.reload(); // Osvježava stranicu da ponovno prikaže gumb "Prijava"
+            location.reload(); // Osvježava stranicu da ponovno prikaže gumb "Prijava
+            "
         }
     </script>
+
+    <script>
+    window.addEventListener('load', function() {
+        // Povuci podatke iz memorije (localStorage)
+        const spremljenoIme = localStorage.getItem('korisnikIme');
+        const spremljeniEmail = localStorage.getItem('korisnikEmail');
+
+        // Pronađi tvoja nova polja preko ID-a
+        const poljeIme = document.getElementById('kontakt-ime');
+        const poljeEmail = document.getElementById('kontakt-email');
+
+        // Ako korisnik postoji u memoriji, upiši podatke u formu
+        if (spremljenoIme && poljeIme) {
+            poljeIme.value = spremljenoIme;
+        }
+
+        if (spremljeniEmail && poljeEmail) {
+            poljeEmail.value = spremljeniEmail;
+        }
+    });
+</script>
+    
 </body>
 </html>
