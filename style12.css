@@ -1063,3 +1063,23 @@ body {
         display: none;
     }
 }
+
+
+/* --- Pametno skrivanje odjave ovisno o ekranu --- */
+
+/* Na velikim ekranima (Desktop): Sakrij odjavu iz hamburgera */
+@media (min-width: 769px) {
+    #mobile-logout {
+        display: none !important; /* Force skrivanje u navigaciji na desktopu */
+    }
+}
+
+/* Na malim ekranima (Mobiteli): Sakrij odjavu s desktop pozicije */
+@media (max-width: 768px) {
+    .desktop-logout-btn {
+        display: none !important; /* Skriva crveni gumb pored imena na mobitelu */
+    }
+    .desktop-user-name {
+        margin-right: 0 !important; /* Popravlja razmak jer gumba više nema */
+    }
+}
