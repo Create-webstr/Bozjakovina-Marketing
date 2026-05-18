@@ -16,12 +16,14 @@
                 <img src="logo.png" alt="Božjakovina Marketing Logo" class="logo">
             </a>
 
-            <nav class="nav">
+             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Početna</a></li>
+                    <li><a href="#home" class="nav-link active">Početna</a></li>
                     <li><a href="Onama.html" class="nav-link">O nama</a></li>
-                    <li><a href="projekti.html" class="nav-link active">Projekti</a></li>
+                    <li><a href="projekti.html" class="nav-link">Projekti</a></li>
                     <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                    <!-- ODJAVA ZA MOBITELE (id: mobile-logout) -->
+                    <li id="mobile-logout" style="display: none;"><a href="#" onclick="odjava(event)" class="nav-link" style="color: red; font-weight: bold;">Odjava</a></li>
                 </ul>
             </nav>
     <div class="header-actions" id="auth-status">
@@ -201,18 +203,41 @@
         });
 
         // Provjera jeli korisnik prijavljen (preko localStorage) čim se stranica učita
-        window.onload = function() {
-            const spremljenoIme = localStorage.getItem('korisnikIme');
-            const authStatus = document.getElementById('auth-status');
+        function prilagodiOdjavu() {
+    const spremljenoIme = localStorage.getItem('korisnikIme');
+    const authStatus = document.getElementById('auth-status');
+    const mobileLogout = document.getElementById('mobile-logout');
 
-            if (spremljenoIme && authStatus) {
-                // Ako je ime pronađeno, zamijeni gumb "Prijava" s imenom i odjavom
+    if (spremljenoIme) {
+        if (window.innerWidth <= 768) {
+            // MOBITEL: Ime gore desno, Odjava u hamburgeru
+            if (authStatus) authStatus.innerHTML = `<span style="font-weight:700; color: #333;">Bok, ${spremljenoIme}</span>`;
+            if (mobileLogout) mobileLogout.style.display = 'block';
+        } else {
+            // DESKTOP: Ime i Odjava su zajedno gore desno
+            if (authStatus) {
                 authStatus.innerHTML = `
                     <span style="margin-right:15px; font-weight:700; color: #333;">Bok, ${spremljenoIme}</span>
                     <a href="#" onclick="odjava(event)" style="color:red; font-size:0.8rem; font-weight:bold; text-decoration:none;">Odjava</a>
                 `;
             }
-        };
+            // SAKRIJ odjavu iz glavnog menija na desktopu
+            if (mobileLogout) mobileLogout.style.display = 'none';
+        }
+    }
+}
+
+// Ovo pokreće provjeru čim se stranica učita
+window.addEventListener('load', prilagodiOdjavu);
+// Ovo prati ako korisnik okreće mobitel ili rasteže prozor
+window.addEventListener('resize', prilagodiOdjavu);
+
+// Funkcija za samu odjavu
+function odjava(event) {
+    if(event) event.preventDefault();
+    localStorage.removeItem('korisnikIme');
+    location.reload();
+}
 
         // Funkcija za odjavu
         function odjava(event) {
