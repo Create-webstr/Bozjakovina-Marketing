@@ -27,15 +27,14 @@
 </head>
 <body class="pocetna-stranica">
     
-   <!-- HEADER / NAVIGACIJA -->
     <header class="header">
         <div class="header-container">
-            <!-- Logo gore lijevo -->
+
             <div class="logo-wrapper">
                 <img src="logo.png" alt="Bozjakovina Marketing Logo" class="logo">
             </div>
 
-            <!-- Navigacija -->
+
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#home" class="nav-link active">Početna</a></li>
@@ -48,7 +47,6 @@
                 </ul>
             </nav>
             
-            <!-- STATUS ZA DESKTOP (id: auth-status) -->
             <div class="header-actions" id="auth-status">
                 <a href="prijava.html" class="btn-prijava">Prijava</a>
             </div>
@@ -61,7 +59,6 @@
         </div>
     </header>
 
-    <!-- HERO SEKCIJA -->
     <section class="hero" id="home">
         <div class="hero-content">
             <p class="hero-subtitle">Dobrodošli u</p>
@@ -82,7 +79,6 @@
         </div>
     </section>
 
-    <!-- USLUGE SEKCIJA -->
     <section class="usluge" id="usluge">
         <div class="section-container">
             <h2 class="section-title">Naše <span class="highlight">Usluge</span></h2>
@@ -114,13 +110,13 @@
     </section>
 
 
-    <!-- FOOTER -->
+
     <footer class="footer">
         <div class="footer-container">
 
-            <!-- Footer gornji dio -->
+
             <div class="footer-top">
-                <!-- Logo i opis -->
+      
                 <div class="footer-brand">
                     <img src="LogoVectorCrno.svg" alt="Bozjakovina Marketing Logo" class="footer-logo">
                     <p class="footer-opis">
@@ -129,23 +125,24 @@
                     </p>
                 </div>
 
-                <!-- Brze poveznice -->
+
                 <div class="footer-links">
                     <h4 class="footer-naslov">Navigacija</h4>
                     <ul>
-                        <li><a href="#home">Početna</a></li>
+                        <li><a href="index.html">Početna</a></li>
                         <li><a href="Onama.html">O nama</a></li>
                         <li><a href="projekti.html">Projekti</a></li>
-                        <li><a href="kontakt.html">Contact</a></li>
+                         <li><a href="faq.html">FaQ</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
                     </ul>
                 </div>
 
-                <!-- Društvene mreže -->
+
                 <div class="footer-social">
                     <h4 class="footer-naslov">Pratite nas</h4>
                     <div class="social-links">
 
-                        <!-- TikTok -->
+                
                         <a href="https://www.tiktok.com/@bozjakovinamarket" 
                            target="_blank" 
                            class="social-card tiktok">
@@ -160,7 +157,7 @@
                             </div>
                         </a>
 
-                        <!-- Instagram -->
+
                         <a href="https://www.instagram.com/bozjakovinamarketing" 
                            target="_blank" 
                            class="social-card instagram">
@@ -179,7 +176,7 @@
                 </div>
             </div>
 
-            <!-- Footer donji dio -->
+   
             <div class="footer-bottom">
                 <div class="footer-divider"></div>
                 <div class="footer-bottom-content">
@@ -194,7 +191,7 @@
     </footer>
 
     <script>
-        // Mobilni izbornik lakša navigacija
+      
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const navList = document.querySelector('.nav-list');
 
@@ -210,16 +207,14 @@
             });
         });
 
-        // Provjera jeli korisnik prijavljen (preko localStorage) čim se stranica učita
-      // Provjera jeli korisnik prijavljen (preko localStorage) čim se stranica učita
-// Provjera jeli korisnik prijavljen (preko localStorage) čim se stranica učita
+      
         window.onload = function() {
             const spremljenoIme = localStorage.getItem('korisnikIme');
             const authStatus = document.getElementById('auth-status');
             const mobileLogout = document.getElementById('mobile-logout');
 
             if (spremljenoIme) {
-                // 1. Postavi desktop verziju (Ime + Odjava pored)
+            
                 if (authStatus) {
                     authStatus.innerHTML = `
                         <span class="desktop-user-name" style="margin-right:15px; font-weight:700; color: #333;">Bok, ${spremljenoIme}</span>
@@ -227,17 +222,17 @@
                     `;
                 }
                 
-                // 2. Omogući mobilnu verziju u hamburgeru
+            
                 if (mobileLogout) {
                     mobileLogout.style.display = 'block';
                 }
             }
         };
-        // Funkcija za odjavu
+ 
         function odjava(event) {
-            if(event) event.preventDefault(); // Sprječava skakanje stranice na vrh zbog '#' linka
-            localStorage.removeItem('korisnikIme'); // Briše ime iz memorije browsera
-            location.reload(); // Osvježava stranicu da ponovno prikaže gumb "Prijava"
+            if(event) event.preventDefault(); 
+            localStorage.removeItem('korisnikIme'); 
+            location.reload(); 
         }
     </script>
 </body>
