@@ -1051,11 +1051,13 @@ body {
     .btn-prijava {
         padding: 6px 15px;
         font-size: 0.8rem;
-        margin-right: 30px; /* Razmak od hamburgera */
+        margin-right: 0;
+        margin-right: 0; /* Razmak od hamburgera */
     }
     
     .header-actions {
-        margin-left: auto; /* Gura gumb prema desno, do hamburgera */
+        margin-left: auto;
+        margin-right: 25px/* Gura gumb prema desno, do hamburgera */
     }
     
     /* Sakrij originalni link Prijave u padajućem meniju ako je ostao */
