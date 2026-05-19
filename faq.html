@@ -314,7 +314,7 @@
     </script>
     
     <script>
-        // Selektiramo sve gumbe s pitanjima
+       // Selektiramo sve gumbe s pitanjima
         const questions = document.querySelectorAll('.faq-question');
 
         // Prolazimo kroz svaki gumb pomoću klasične petlje
@@ -322,13 +322,15 @@
             questions[i].addEventListener('click', function() {
                 // Pronalazimo glavni kontejner tog pitanja (.faq-item)
                 const item = this.parentElement;
-
+                
+                // --- NOVI DIO KODA ZA AUTOMATSKO ZATVARANJE OSTALIH ---
+                // Pronađi sve faq-iteme na stranici
                 const allItems = document.querySelectorAll('.faq-item');
                 for (let j = 0; j < allItems.length; j++) {
                     // Ako element NIJE ovaj koji smo upravo kliknuli, makni mu klasu 'active'
                     if (allItems[j] !== item) {
                         allItems[j].classList.remove('active');
-            
+                        
                 item.classList.toggle('active');
             });
         }
