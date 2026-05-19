@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Božjakovina Marketing</title>
+  
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        /* Stilovi za Accordion (Pitanja i Odgovore) */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 15px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Gumb/Pitanje */
+        .faq-question {
+            background: none;
+            border: none;
+            text-align: left;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            padding: 10px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question:hover {
+            color: #3498db;
+        }
+
+        /* Ikona plus/minus */
+        .icon {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Skriveni okvir s odgovorom */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            background-color: #f9fbfd;
+            border-radius: 5px;
+            padding: 0 15px; /* Početni padding je 0 gore-dolje da se ne vidi */
+        }
+
+        /* Klasa koju JS dodaje kada je pitanje aktivno (otvoreno) */
+        .faq-item.active .faq-answer {
+            padding: 15px;
+            /* max-height prebacujemo na veliku vrijednost da se glatko otvori */
+            max-height: 300px; 
+            border-left: 4px solid #3498db;
+        }
+
+        .faq-item.active .icon {
+            transform: rotate(45deg); /* Rotira plus da postane x/minus */
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-container">
+        <h1>Često postavljana pitanja</h1>
+        <p class="subtitle">Naučite osnove digitalnog marketinga i unaprijedite svoje poslovanje</p>
+
+        <!-- 1. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Čemu služi SEO?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                SEO (Search Engine Optimization) služi za optimizaciju tvoje web stranice kako bi se ona prikazivala što više na Googleu kada ljudi traže tvoje usluge. Cilj je dobiti besplatan (organski) promet bez plaćanja oglasa.
+            </div>
+        </div>
+
+        <!-- 2. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Jel bitna promocija na društvenim mrežama?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Izuzetno je bitna! Društvene mreže su mjesto gdje tvoji potencijalni kupci provode najviše vremena. Kroz njih gradiš povjerenje, komuniciraš izravno s publikom i stvaraš prepoznatljiv brend.
+            </div>
+        </div>
+
+        <!-- 3. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Jel težak i kako se odrađuje Instagram ili TikTok marketing?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Nije težak ako si kreativan i dosljedan. Odrađuje se snimanjem kratkih, zanimljivih videozapisa (Reels i TikToks) koji rješavaju probleme tvoje publike ili ih zabavljaju. Ključ je u autentičnosti i praćenju trendova – skupe kamere ti ne trebaju, dovoljan je mobitel.
+            </div>
+        </div>
+
+        <!-- 4. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Koja je razlika između plaćenih oglasa i organskih objava?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Organske objave su besplatne i vide ih uglavnom tvoji postojeći pratitelji. Plaćeni oglasi (npr. Meta Ads ili Google Ads) omogućuju ti da platiš platformi kako bi tvoj sadržaj vidjelo tisuće novih ljudi koji točno odgovaraju tvom idealnom kupcu.
+            </div>
+        </div>
+
+        <!-- 5. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Što je to "Copywriting" i zašto mi treba?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Copywriting je vještina pisanja tekstova s ciljem da potaknu čitatelja na akciju (npr. kupnju, prijavu na newsletter ili slanje upita). Dobar tekst na stranici može drastično povećati prodaju jer objašnjava vrijednost tvog proizvoda.
+            </div>
+        </div>
+
+        <!-- 6. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Koliko često trebam objavljivati sadržaj?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Kvaliteta je uvijek važnija od kvantitete. Za početak je idealno imati 2 do 3 kvalitetne objave tjedno na Instagramu/Facebooku, dok TikTok voli malo češće objavljivanje (čak i svaki dan ako su videi kratki). Najvažnije je da si redovit.
+            </div>
+        </div>
+
+        <!-- 7. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Što je to Email marketing i radi li to još uvijek?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Itekako radi! Email marketing je slanje korisnih savjeta, novosti i ponuda direktno u sandučić tvojih pretplatnika. Smatra se jednim od najprofitabilnijih oblika marketinga jer šalješ poruku ljudima koji su već pokazali interes za tebe.
+            </div>
+        </div>
+
+        <!-- 8. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Kako mogu pratiti jesu li moje marketinške kampanje uspješne?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Uspjeh se prati pomoću analitičkih alata (poput Google Analyticsa ili ugrađene analitike na Instagramu). Gledaju se metrike kao što su broj posjeta stranici, postotak ljudi koji su kliknuli na oglas (CTR) i na kraju najvažnije – broj ostvarenih upita ili prodaja.
+            </div>
+        </div>
+
+        <!-- 9. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Što je to "Ciljana publika" (Target Audience)?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Ciljana publika je specifična skupina ljudi za koju je najvjerojatnije da će kupiti tvoj proizvod ili uslugu. Umjesto da prodaješ svima, marketing usmjeravaš prema njima na temelju njihovih godina, lokacije, interesa i problema koje imaju.
+            </div>
+        </div>
+
+        <!-- 10. Pitanje -->
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Koliko vremena treba da marketing donese prve rezultate?</span>
+                <span class="icon">+</span>
+            </button>
+            <div class="faq-answer">
+                Plaćeni oglasi mogu donijeti prve upite već u roku od nekoliko dana. S druge strane, dugoročne strategije poput SEO optimizacije i građenja organske publike na društvenim mrežama obično zahtijevaju 3 do 6 mjeseci kontinuiranog rada da bi se vidjeli pravi rezultati.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Selektiramo sve gumbe s pitanjima
+        const questions = document.querySelectorAll('.faq-question');
+
+        // Prolazimo kroz svaki gumb pomoću klasične petlje
+        for (let i = 0; i < questions.length; i++) {
+            questions[i].addEventListener('click', function() {
+                // Pronalazimo glavni kontejner tog pitanja (.faq-item)
+                const item = this.parentElement;
+                
+                // Ako želiš da se klikom na jedno pitanje automatski zatvore sva ostala, 
+                // otkomentiraj (makni //) sljedeće tri linije koda ispod:
+                // document.querySelectorAll('.faq-item').forEach(el => {
+                //     if(el !== item) el.classList.remove('active');
+                // });
+
+                // Toggle klase 'active' na kliknutom elementu
+                item.classList.toggle('active');
+            });
+        }
+    </script>
+
+</body>
+</html>
