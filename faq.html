@@ -305,6 +305,33 @@
             });
         }
     </script>
+            <script>
+            window.onload = function() {
+            const spremljenoIme = localStorage.getItem('korisnikIme');
+            const authStatus = document.getElementById('auth-status');
+            const mobileLogout = document.getElementById('mobile-logout');
 
+            if (spremljenoIme) {
+                // 1. Postavi desktop verziju (Ime + Odjava pored)
+                if (authStatus) {
+                    authStatus.innerHTML = `
+                        <span class="desktop-user-name" style="margin-right:15px; font-weight:700; color: #333;">Bok, ${spremljenoIme}</span>
+                        <a href="#" class="desktop-logout-btn" onclick="odjava(event)" style="color:red; font-size:0.8rem; font-weight:bold; text-decoration:none;">Odjava</a>
+                    `;
+                }
+                
+                // 2. Omogući mobilnu verziju u hamburgeru
+                if (mobileLogout) {
+                    mobileLogout.style.display = 'block';
+                }
+            }
+        };
+        // Funkcija za odjavu
+        function odjava(event) {
+            if(event) event.preventDefault(); // Sprječava skakanje stranice na vrh zbog '#' linka
+            localStorage.removeItem('korisnikIme'); // Briše ime iz memorije browsera
+            location.reload(); // Osvježava stranicu da ponovno prikaže gumb "Prijava"
+        }
+    </script>
 </body>
 </html>
