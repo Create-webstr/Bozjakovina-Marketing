@@ -1051,7 +1051,7 @@ body {
     .btn-prijava {
         padding: 6px 15px;
         font-size: 0.8rem;
-        margin-right: 10px; /* Razmak od hamburgera */
+        margin-right: 30px; /* Razmak od hamburgera */
     }
     
     .header-actions {
