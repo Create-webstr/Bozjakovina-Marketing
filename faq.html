@@ -314,26 +314,30 @@
     </script>
     
     <script>
-       // Selektiramo sve gumbe s pitanjima
-        const questions = document.querySelectorAll('.faq-question');
+      // Selektiramo sve gumbe s pitanjima
+    const questions = document.querySelectorAll('.faq-question');
 
-        // Prolazimo kroz svaki gumb pomoću klasične petlje
-        for (let i = 0; i < questions.length; i++) {
-            questions[i].addEventListener('click', function() {
-                // Pronalazimo glavni kontejner tog pitanja (.faq-item)
-                const item = this.parentElement;
-                
-                // --- NOVI DIO KODA ZA AUTOMATSKO ZATVARANJE OSTALIH ---
-                // Pronađi sve faq-iteme na stranici
-                const allItems = document.querySelectorAll('.faq-item');
-                for (let j = 0; j < allItems.length; j++) {
-                    // Ako element NIJE ovaj koji smo upravo kliknuli, makni mu klasu 'active'
-                    if (allItems[j] !== item) {
-                        allItems[j].classList.remove('active');
-                        
-                item.classList.toggle('active');
-            });
-        }
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].addEventListener('click', function() {
+            // Sigurno pronalazimo glavni .faq-item kontejner ovog pitanja
+            const currentItem = this.closest('.faq-item');
+            
+            // Provjeravamo je li ovo pitanje već bilo otvoreno prije klika
+            const isAlreadyActive = currentItem.classList.contains('active');
+
+            // 1. Prođi kroz SVA pitanja na stranici i zatvori ih
+            const allItems = document.querySelectorAll('.faq-item');
+            for (let j = 0; j < allItems.length; j++) {
+                allItems[j].classList.remove('active');
+            }
+
+            // 2. Ako pitanje NIJE bilo otvoreno, sada ga otvori
+            // (Ako je bilo otvoreno, ostavit ćemo ga zatvorenim nakon gornje petlje)
+            if (!isAlreadyActive) {
+                currentItem.classList.add('active');
+            }
+        });
+    }
     </script>
             <script>
             window.onload = function() {
