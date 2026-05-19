@@ -285,6 +285,24 @@
     </footer>
 
     <script>
+  // Mobilni izbornik lakša navigacija
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+    </script>
+    
+    <script>
         // Selektiramo sve gumbe s pitanjima
         const questions = document.querySelectorAll('.faq-question');
 
