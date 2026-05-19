@@ -322,14 +322,13 @@
             questions[i].addEventListener('click', function() {
                 // Pronalazimo glavni kontejner tog pitanja (.faq-item)
                 const item = this.parentElement;
-                
-                // Ako želiš da se klikom na jedno pitanje automatski zatvore sva ostala, 
-                // otkomentiraj (makni //) sljedeće tri linije koda ispod:
-                // document.querySelectorAll('.faq-item').forEach(el => {
-                //     if(el !== item) el.classList.remove('active');
-                // });
 
-                // Toggle klase 'active' na kliknutom elementu
+                const allItems = document.querySelectorAll('.faq-item');
+                for (let j = 0; j < allItems.length; j++) {
+                    // Ako element NIJE ovaj koji smo upravo kliknuli, makni mu klasu 'active'
+                    if (allItems[j] !== item) {
+                        allItems[j].classList.remove('active');
+            
                 item.classList.toggle('active');
             });
         }
