@@ -60,6 +60,33 @@
     <link rel="stylesheet" href="style12.css">
 </head>
     
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="logo.png" alt="Božjakovina Marketing Logo" class="logo">
+            </a>
+
+           <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Početna</a></li>
+                    <li><a href="Onama.html" class="nav-link">O nama</a></li>
+                    <li><a href="projekti.html" class="nav-link">Projekti</a></li>
+                    <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                    <!-- ODJAVA ZA MOBITELE (id: mobile-logout) -->
+                    <li id="mobile-logout" style="display: none;"><a href="#" onclick="odjava(event)" class="nav-link" style="color: red; font-weight: bold;">Odjava</a></li>
+                </ul>
+            </nav>
+         <div class="header-actions" id="auth-status">
+    <a href="prijava.html" class="btn-prijava">Prijava</a>
+    </div>
+            <button class="mobile-menu-toggle" aria-label="Otvori izbornik">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+    </button>
+        </div>
+    </header>
+    
 <body>
 
     <div class="faq-container">
