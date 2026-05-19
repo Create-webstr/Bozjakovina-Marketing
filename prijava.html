@@ -49,9 +49,9 @@
             display: none;
         }
         .footer {
-    background-color: #000000; /* Potpuno crna pozadina */
-    color: #ffffff;            /* Bijeli tekst da se vidi na crnom */
-    padding: 60px 0 20px;     /* Malo razmaka gore i dolje */
+    background-color: #000000; 
+    color: #ffffff;          
+    padding: 60px 0 20px;    
 }
     
     </style>
@@ -141,10 +141,10 @@
     </footer>
 
     <script>
-        // TVOJ SHEETDB URL
+
         const SHEETDB_URL = "https://sheetdb.io/api/v1/ju7fsajt596m3";
 
-        // Prebacivanje između Prijava i Registracija
+  
         function toggleAuth() {
             const login = document.getElementById('login-form');
             const register = document.getElementById('register-form');
@@ -157,7 +157,6 @@
             }
         }
 
-        // --- REGISTRACIJA ---
         const regForm = document.querySelector('#register-form form');
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -179,7 +178,7 @@
             .catch(err => alert("Greška: " + err));
         });
 
-        // --- PRIJAVA ---
+
         const logForm = document.querySelector('#login-form form');
         logForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -199,7 +198,6 @@
             });
         });
 
-        // --- PROVJERA PRIJAVE ZA HEADER ---
         window.onload = function() {
             const spremljenoIme = localStorage.getItem('korisnikIme');
             const authStatus = document.getElementById('auth-status');
@@ -213,7 +211,7 @@
             location.reload();
         }
 
-        // Mobilni menu
+        
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const navList = document.querySelector('.nav-list');
         menuToggle.addEventListener('click', () => {
