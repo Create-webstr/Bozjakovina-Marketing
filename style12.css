@@ -5,7 +5,6 @@
 }
 
 :root {
-    /* Crno-bijela paleta s nijansama sive */
     --bijela:        #FFFFFF;
     --svijetlo-siva: #F5F5F5;
     --siva-1:        #E8E8E8;
@@ -22,7 +21,7 @@
     --plava-tamna:    #1D4ED8;
     --plava-extra:    #1E3A8A;
 
-    /* Ostalo */
+
     --border-radius:  8px;
     --border-radius-lg: 16px;
     --transition:     all 0.3s ease;
@@ -42,9 +41,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ========================================
-   POMOĆNE KLASE
-======================================== */
+
 .highlight {
     color: var(--plava);
 }
@@ -71,9 +68,6 @@ body {
     margin-bottom: 60px;
 }
 
-/* ========================================
-   GUMBI
-======================================== */
 .btn {
     display: inline-block;
     padding: 14px 32px;
@@ -114,9 +108,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* ========================================
-   HEADER
-======================================== */
+
 .header {
     position: fixed;
     top: 0;
@@ -139,29 +131,28 @@ body {
     justify-content: space-between;
 }
 
-/* Logo */
+
 .logo-wrapper {
     display: flex;
     align-items: left;
-    gap: 12px; /* Razmak između slike i teksta ako ga dodaš */
+    gap: 12px;
     text-decoration: none;
 }
 
 .logo {
-    /* Povećano sa 44px na 54px za bolju vidljivost */
+  
     height: 150px; 
     width: auto;
     transition: var(--transition);
-    /* Uklonjen filter brightness(0) kako bi se vidjele originalne boje */
-    /* Ako želiš da bude crn, ostavi filter, ali preporučujem original */
+
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 .logo:hover {
-    transform: scale(1.05); /* Lagano povećanje na hover umjesto samo promjene boje */
+    transform: scale(1.05); 
 }
 
-/* Dodatak: Tekstualni logo ako je slika presitna */
+
 .logo-text {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
@@ -175,7 +166,7 @@ body {
     color: var(--plava);
 }
 
-/* Navigacija */
+
 .nav-list {
     list-style: none;
     display: flex;
@@ -201,9 +192,7 @@ body {
     background-color: rgba(59, 130, 246, 0.08);
 }
 
-/* ========================================
-   HERO SEKCIJA
-======================================== */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -304,9 +293,7 @@ body {
     opacity: 0.05;
 }
 
-/* ========================================
-   USLUGE SEKCIJA
-======================================== */
+
 .usluge {
     background-color: var(--bijela);
     border-top: 1px solid var(--siva-1);
@@ -373,9 +360,7 @@ body {
     line-height: 1.7;
 }
 
-/* ========================================
-   O NAMA SEKCIJA
-======================================== */
+
 .o-nama {
     background-color: var(--svijetlo-siva);
     border-top: 1px solid var(--siva-1);
@@ -474,9 +459,7 @@ body {
     opacity: 0.85;
 }
 
-/* ========================================
-   KONTAKT SEKCIJA
-======================================== */
+
 .kontakt {
     background-color: var(--bijela);
 }
@@ -531,7 +514,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Forma */
+
 .kontakt-forma {
     display: flex;
     flex-direction: column;
@@ -573,9 +556,7 @@ body {
     min-height: 140px;
 }
 
-/* ========================================
-   FOOTER
-======================================== */
+
 .footer {
     background-color: var(--crna);
     color: var(--siva-2);
@@ -595,7 +576,7 @@ body {
     padding: 60px 0 40px;
 }
 
-/* Brand / Logo dio */
+
 .footer-brand {
     display: left;
     flex-direction: column;
@@ -622,7 +603,7 @@ body {
     max-width: 280px;
 }
 
-/* Footer linkovi */
+
 .footer-naslov {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
@@ -654,7 +635,6 @@ body {
     transform: translateX(4px);
 }
 
-/* Društvene mreže */
 .footer-social {
     display: flex;
     flex-direction: column;
@@ -683,14 +663,12 @@ body {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* TikTok hover */
 .social-card.tiktok:hover {
     background-color: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
 }
 
-/* Instagram hover */
 .social-card.instagram:hover {
     background-color: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.3);
@@ -736,7 +714,7 @@ body {
     color: var(--siva-3);
 }
 
-/* Footer donji dio */
+
 .footer-divider {
     height: 1px;
     background: linear-gradient(
@@ -774,11 +752,8 @@ body {
     color: var(--siva-4);
 }
 
-/* ========================================
-   RESPONZIVNOST
-======================================== */
 
-/* Tablet */
+
 @media (max-width: 1024px) {
     .o-nama-content {
         grid-template-columns: 1fr;
@@ -808,7 +783,7 @@ body {
     }
 }
 
-/* Mobitel */
+
 @media (max-width: 768px) {
     .header-container {
         padding: 0 16px;
@@ -858,7 +833,7 @@ body {
     }
 }
 
-/* Mali mobilni */
+
 @media (max-width: 480px) {
     .logo {
         height: 36px;
@@ -883,9 +858,9 @@ body {
     }
 }
 
-/* Stil za Hamburger ikonu */
+
 .mobile-menu-toggle {
-    display: none; /* Skriveno na desktopu */
+    display: none; 
     flex-direction: column;
     gap: 6px;
     background: none;
@@ -901,16 +876,16 @@ body {
     transition: var(--transition);
 }
 
-/* Stil za navigaciju na mobitelu */
+
 @media (max-width: 768px) {
     .mobile-menu-toggle {
-        display: flex; /* Prikazuje se samo na mobitelu */
+        display: flex; 
     }
 
     .nav-list {
         position: fixed;
         top: 0;
-        right: -100%; /* Skriveno desno izvan ekrana */
+        right: -100%; 
         width: 80%;
         height: 100vh;
         background-color: var(--bijela);
@@ -922,7 +897,7 @@ body {
         z-index: 1000;
     }
 
-    /* Klasa koju JS dodaje kad kliknemo */
+ 
     .nav-list.active {
         right: 0;
     }
@@ -931,7 +906,7 @@ body {
         font-size: 1.2rem;
     }
 
-    /* Animacija hamburgera u 'X' kad je otvoren */
+
     .mobile-menu-toggle.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
@@ -942,9 +917,7 @@ body {
         transform: translateY(-9px) rotate(-45deg);
     }
 }
-/* ========================================
-   POPRAVAK ZA VISUAL BOX (SLIKA O NAMA)
-======================================== */
+
 
 .visual-box {
     display: flex;
@@ -953,57 +926,53 @@ body {
     background: var(--bijela);
     border: 2px solid var(--siva-1);
     border-radius: var(--border-radius-lg);
-    padding: 20px;            /* Smanjen padding da slika ima više mjesta */
+    padding: 20px;           
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
-    min-height: 300px;        /* Osigurava minimalnu visinu okvira */
-    width: 100%;              /* Širina okvira prati roditeljski kontejner */
+    min-height: 300px;        
+    width: 100%;              
 }
 
 .visual-logo {
-    width: 100%;              /* Slika će se raširiti do rubova okvira... */
-    max-width: 400px;         /* ...ali neće ići preko 400px širine */
-    height: auto;             /* Zadržava originalne proporcije */
-    object-fit: contain;      /* KLJUČNO: Osigurava da cijela slika stane unutar okvira bez rezanja */
-    filter: none;             /* Uklanjamo filter da se logo vidi u boji */
-    opacity: 1;               /* Puna vidljivost */
+    width: 100%;            
+    max-width: 400px;       
+    height: auto;             
+    object-fit: contain;   
+    filter: none;             
+    opacity: 1;            
     transition: var(--transition);
 }
 
-/* Responzivno prilagođavanje za mobitele */
 @media (max-width: 768px) {
     .visual-box {
-        min-height: 200px;    /* Nešto niži okvir na manjim ekranima */
+        min-height: 200px;    
         padding: 10px;
     }
 }
 
-/* ========================================
-   SMANJIVANJE HEADERA ZA MOBITELE
-======================================== */
+
 
 @media (max-width: 768px) {
-    /* Smanjujemo visinu cijelog headera sa 170px na 80px */
+ 
     .header-container {
         height: 80px !important; 
         padding: 0 20px;
     }
 
-    /* Smanjujemo logo sa 150px na 50px da stane u manji header */
+   
     .logo {
         height: 50px !important;
         width: auto;
     }
 
-    /* Pomakni hero sekciju prema gore jer je header sada manji */
+   
     .hero {
         padding-top: 100px !important;
         min-height: auto;
     }
 }
 
-/* Smanjivanje headera SAMO na početnoj stranici za mobitele */
 @media (max-width: 768px) {
     .pocetna-stranica .header-container {
         height: 85px !important;
@@ -1015,13 +984,13 @@ body {
         width: auto;
     }
 
-    /* Smanjujemo i razmak hero sekcije da tekst dođe više gore */
+
     .pocetna-stranica .hero {
         padding-top: 110px !important;
     }
 }
 
-/* Stil za gumb u headeru */
+
 .header-actions {
     display: flex;
     align-items: center;
@@ -1045,48 +1014,42 @@ body {
     color: var(--plava);
 }
 
-/* PRILAGODBA ZA MOBITELE */
+
 @media (max-width: 768px) {
-    /* Gumb ostaje vidljiv pored hamburgera, ali ga malo smanjimo */
+ 
     .btn-prijava {
         padding: 6px 15px;
         font-size: 0.8rem;
         margin-right: 0;
-        margin-right: 0; /* Razmak od hamburgera */
+        margin-right: 0; 
     }
     
     .header-actions {
         margin-left: auto;
-        margin-right: 25px/* Gura gumb prema desno, do hamburgera */
+        margin-right: 25px
     }
     
-    /* Sakrij originalni link Prijave u padajućem meniju ako je ostao */
     .nav-list a[href="prijava.html"] {
         display: none;
     }
 }
 
 
-/* --- Pametno skrivanje odjave ovisno o ekranu --- */
-
-/* Na velikim ekranima (Desktop): Sakrij odjavu iz hamburgera */
 @media (min-width: 769px) {
     #mobile-logout {
-        display: none !important; /* Force skrivanje u navigaciji na desktopu */
+        display: none !important; 
     }
 }
 
-/* Na malim ekranima (Mobiteli): Sakrij odjavu s desktop pozicije */
 @media (max-width: 768px) {
     .desktop-logout-btn {
-        display: none !important; /* Skriva crveni gumb pored imena na mobitelu */
+        display: none !important; 
     }
     .desktop-user-name {
-        margin-right: 0 !important; /* Popravlja razmak jer gumba više nema */
+        margin-right: 0 !important; 
     }
 }
 
-/* Sakrij mobilnu odjavu na desktopu */
 @media (min-width: 769px) {
     #mobile-logout {
         display: none !important;
@@ -1114,7 +1077,6 @@ body {
             margin-bottom: 30px;
         }
 
-        /* Stilovi za Accordion (Pitanja i Odgovore) */
         .faq-item {
             border-bottom: 1px solid #e2e8f0;
             padding: 15px 0;
@@ -1124,7 +1086,6 @@ body {
             border-bottom: none;
         }
 
-        /* Gumb/Pitanje */
         .faq-question {
             background: none;
             border: none;
@@ -1145,13 +1106,13 @@ body {
             color: #3498db;
         }
 
-        /* Ikona plus/minus */
+
         .icon {
             font-size: 1.4rem;
             transition: transform 0.3s ease;
         }
 
-        /* Skriveni okvir s odgovorom */
+  
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -1161,18 +1122,17 @@ body {
             font-size: 0.95rem;
             background-color: #f9fbfd;
             border-radius: 5px;
-            padding: 0 15px; /* Početni padding je 0 gore-dolje da se ne vidi */
+            padding: 0 15px;
         }
 
-        /* Klasa koju JS dodaje kada je pitanje aktivno (otvoreno) */
+      
         .faq-item.active .faq-answer {
             padding: 15px;
-            /* max-height prebacujemo na veliku vrijednost da se glatko otvori */
             max-height: 300px; 
             border-left: 4px solid #3498db;
         }
 
         .faq-item.active .icon {
-            transform: rotate(45deg); /* Rotira plus da postane x/minus */
+            transform: rotate(45deg); 
             color: #e74c3c;
         }
