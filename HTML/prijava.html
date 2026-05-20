@@ -59,7 +59,7 @@
 <body class="pocetna-stranica"> 
     <header class="header">
         <div class="header-container">
-            <a href="index.html" class="logo-wrapper">
+            <a href="../index.html" class="logo-wrapper">
                 <img src="../SLIKE/logo.png" alt="Božjakovina Marketing Logo" class="logo">
             </a>
 
@@ -191,7 +191,7 @@
                 if (data.length > 0 && data[0].lozinka === lozinkaIn) {
                     localStorage.setItem('korisnikIme', data[0].ime);
                     localStorage.setItem('korisnikEmail', emailIn);
-                    window.location.href = "index.html";
+                    window.location.href = "../index.html";
                 } else {
                     alert("Krivi podaci za prijavu.");
                 }
